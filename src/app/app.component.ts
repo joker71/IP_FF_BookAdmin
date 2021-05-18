@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'restaurantadmin';
+  currentcomp='listfood';
+  Direct(comp: string): void{
+    this. currentcomp=comp;
+  }
 }

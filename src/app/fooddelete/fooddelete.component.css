@@ -235,6 +235,23 @@ form input[type="submit"] {
   -ms-border-radius: 0.5em;
   border-radius: 0.5em;
 }
+form input[type="submit2"] {
+    background: #4b8f67;
+    border: none;
+    border-bottom: solid 4px #4b8f67;
+    padding: 0.7em 3em;
+    margin: 1em 0;
+    color: white;
+    text-shadow: 0 -1px 0 #4b8f67;
+    font-size: 1.1em;
+    font-weight: bold;
+    display: inline-block;
+    width: auto;
+    -webkit-border-radius: 0.5em;
+    -moz-border-radius: 0.5em;
+    -ms-border-radius: 0.5em;
+    border-radius: 0.5em;
+  }
 form input[type="submit"]:hover {
   background: turquoise;
   border: none;
@@ -438,3 +455,12 @@ td {
     width: 23%;
   }
 }
+
+  .action {
+      display: flex;
+      flex-direction: row;
+  }
+  .action button{
+      margin: 5px;
+      border: 1px solid rgb(100, 99, 99);
+  }

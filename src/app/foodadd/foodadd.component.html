@@ -1,0 +1,57 @@
+<!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+
+<p>foodadd works!</p>
+
+<form [formGroup]="createForm">
+    <span>Id</span> <input type="number" formControlName="id">
+    <span>name</span> <input type="text" formControlName="name">
+    <span>price</span> <input type="number" formControlName="price">
+    <span>img</span> <input type="text" formControlName="img">
+    <span>description</span> <input type="text" formControlName="description">
+    <span>food_last_vode</span> <input type="number" formControlName="food_last_vode">
+    <span>created_by:</span> <input type="text" formControlName="created_by">
+    <select name="category_id" id="rr" formControlName="food_category_id" *ngFor="let i of listCategory">
+        <option value="" [ngValue]="i.id">{{i.name}}</option>
+    </select>
+
+    <div class="group-buttons -bottom">
+        <button class="btn btn-main" (click)="save()">LƯU</button>
+        <button class="btn btn-second">HỦY</button>
+    </div>
+</form> -->
+
+
+
+<main role="main">
+    
+<section class="panel important">
+    <h2>Add food</h2>
+    <form [formGroup]="createForm">
+        <div class="twothirds">
+            Name:<br />
+            <input type="text" name="title" size="40" formControlName="name" /><br /><br />
+            <span>Price:</span><br />
+            <input type="number" name="title" size="40" formControlName="price"><br /> <br />
+            <span>img</span><br />
+            <input name="title" size="40" type="text" formControlName="img"><br /><br />
+            <span>food_last_vode</span><br />
+            <input type="number" name="title" size="40" formControlName="food_last_vode"><br /><br />
+            <span>created_by:</span><br />
+            <input type="text" name="title" size="40" formControlName="created_by"><br /><br />
+            <span>category</span><br />
+            <select name="category_id" name="title" id="rr" formControlName="food_category_id">
+                <option *ngFor="let i of listCategory" value="" [ngValue]="i.id">{{i.name}}</option>
+            </select>
+            <br />
+            <br />
+            Description:<br />
+            <textarea name="newstext" rows="15" cols="67" formControlName="description"></textarea><br />
+        </div>
+        <div>
+            <input type="submit" name="submit" value="Save" (click)="save()" />
+            <input type="submit" name="submit" value="Cancel" routerLink="/home/">
+        </div>
+
+    </form>
+</section>
+</main>

@@ -1,0 +1,50 @@
+<p>foodview works!</p>
+
+
+<header role="banner">
+    <h1>Admin Panel</h1>
+    <ul class="utilities">
+      <br>
+      <li class="users"><a href="#">My Account</a></li>
+      <li class="logout warn"><a href="">Log Out</a></li>
+    </ul>
+  </header>
+  
+  <nav role='navigation'>
+  </nav>
+  
+  <main role="main">
+    
+    <section class="panel important">
+      <h2>Quan ly danh sach thuc an</h2>
+      <ul>
+        <li>Chi danh cho quan tri vien</li>
+      </ul>
+    </section>
+    <section class="panel important">
+        <h2>View food</h2>
+        <form [formGroup]="createForm">
+            <div class="twothirds">
+                Name:<br />
+                <input type="text" name="title" size="40" formControlName="name" [attr.disabled]=false/><br /><br />
+                <span>Price:</span><br />
+                <input type="number" name="title" size="40" formControlName="price" [attr.disabled]=false><br /> <br />
+                <span>img</span><br />
+                <img [src]="food?.food_img" alt="">
+                <input name="title" size="40" type="text" formControlName="img" [attr.disabled]=false><br /><br />
+                <span>food_last_vode</span><br />
+                <input type="number" name="title" size="40" formControlName="food_last_vode" [attr.disabled]=false><br /><br />
+                <span>created_by:</span><br />
+                <input type="text" name="title" size="40" formControlName="created_by" [attr.disabled]=false><br /><br />
+                <span>category</span><br />
+                <input type="text" name="title" size="40"  formControlName="food_category_id" [attr.disabled]=false><br /><br />
+                <br />
+                <br />
+                Description:<br />
+                <textarea name="newstext" rows="15" cols="67" formControlName="description" [attr.disabled]=false></textarea><br />
+            </div>
+            
+        </form>
+    </section>
+  
+  </main>

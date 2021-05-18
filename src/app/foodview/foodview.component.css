@@ -438,3 +438,6 @@ td {
     width: 23%;
   }
 }
+img{
+    max-width: 300px;
+}
