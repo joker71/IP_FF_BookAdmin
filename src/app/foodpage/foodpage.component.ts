@@ -1,30 +1,26 @@
 import { Component, OnInit } from '@angular/core';
+// import { Component, OnInit } from '@angular/core';
 import { MFood } from '../model/food';
 import { Router } from '@angular/router';
 import { FoodService } from '../service/food.service';
 import { OrderPipe } from 'ngx-order-pipe';
-import { ActivatedRoute } from '@angular/router';
-
-
 @Component({
-  selector: 'app-foodlist',
-  templateUrl: './foodlist.component.html',
-  styleUrls: ['./foodlist.component.css']
+  selector: 'app-foodpage',
+  templateUrl: './foodpage.component.html',
+  styleUrls: ['./foodpage.component.css']
 })
-export class FoodlistComponent implements OnInit {
+export class FoodpageComponent implements OnInit {
 
   nextcom: string = "listfood";
   listfood: any=[];
   bookid?: number;
-  jwt?: number;
   bookout: MFood | null= null;
   order: string = 'price';
   reverse: boolean = false;
   constructor(
     private orderPipe: OrderPipe,
     private foodService:FoodService,
-    private router: Router,
-    private route: ActivatedRoute
+    private router: Router
   ) {
    
   }

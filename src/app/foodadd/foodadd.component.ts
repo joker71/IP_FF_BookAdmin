@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 import { HttpResponse } from '@angular/common/http';
-import { AbstractControl, AsyncValidatorFn, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { Food, MFood } from '../model/food';
 import { FoodService } from '../service/food.service';
 import { ToastrService } from 'ngx-toastr'
@@ -25,6 +26,7 @@ export class FoodaddComponent implements OnInit {
     private formBuilder: FormBuilder,
     protected foodService: FoodService,
     protected foodCategory: FoodcategoryService,
+    private router: Router,
     public toastr: ToastrService
   ) { }
 
@@ -86,7 +88,7 @@ export class FoodaddComponent implements OnInit {
         this.foodService.create(food)
       );
     }
-
+    this.router.navigate(['home'], { queryParams: { jwt: 1}});
   }
   protected subscribeToSaveResponse(result: Observable<HttpResponse<MFood>>): void {
     result.subscribe(
@@ -111,6 +113,9 @@ export class FoodaddComponent implements OnInit {
     this.toastr.error('Vui long kiem tra lai', 'Nhap sai', {
       timeOut: 3000,
     });
+  }
+  cancel(){
+    this.router.navigate(['home']);
   }
 
 }

@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Route } from '@angular/router';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 import { HttpResponse } from '@angular/common/http';
 import { FormBuilder } from '@angular/forms';
 import { Food, MFood } from '../model/food';
@@ -24,7 +25,8 @@ export class FooddeleteComponent implements OnInit {
     private route: ActivatedRoute,
     protected foodService: FoodService,
     protected foodCategory: FoodcategoryService,
-    public toastr: ToastrService
+    public toastr: ToastrService,
+    private router2: Router
   ) { }
 
   ngOnInit(): void {
@@ -32,7 +34,11 @@ export class FooddeleteComponent implements OnInit {
   }
   delete(){
     this.foodService.delete(this.id).subscribe();
+    this.router2.navigate(['home'], { queryParams: { jwt: 1}});
+    
   }
-  cancel(){}
+  cancel(){
+    this.router2.navigate(['home']);
+  }
 
 }

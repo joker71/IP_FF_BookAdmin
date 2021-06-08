@@ -139,5 +139,6 @@ export class FoodupdateComponent implements OnInit {
       timeOut: 3000,
     });
   }
+  
 
 }

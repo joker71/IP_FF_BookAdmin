@@ -7,9 +7,11 @@ import { FooddeleteComponent } from './fooddelete/fooddelete.component';
 import { FoodviewComponent } from './foodview/foodview.component';
 import { FoodaddComponent } from './foodadd/foodadd.component';
 import { FoodlistComponent } from './foodlist/foodlist.component';
+
 const routes: Routes = [
   { path: 'update/:id', component:FoodupdateComponent},
   { path: 'home', component:FoodlistComponent},
+  
   { path: 'add', component: FoodaddComponent},
   { path: 'view/:id', component: FoodviewComponent },
   { path: 'delete/:id', component: FooddeleteComponent}

@@ -12,31 +12,29 @@ type EntityArrayResponseType = HttpResponse<MFood[]>;
 })
 export class FoodService {
 
-  resourceUrl= "http://localhost:8080/api"
+  resourceUrl= "http://localhost:3000/food"
   constructor(protected http: HttpClient) { }
   create(food: MFood): Observable<HttpResponse<MFood>>{
-    return this.http.post<MFood>(this.resourceUrl + "/add-food", food, {observe: 'response'});
+    return this.http.post<MFood>(this.resourceUrl , food, {observe: 'response'});
   }
   update(food: MFood) : Observable<HttpResponse<MFood>> {
-    return this.http.put<MFood>(this.resourceUrl+"/put-food", food, {observe: 'response'});
+    return this.http.put<MFood>(this.resourceUrl, food, {observe: 'response'});
   }
   find(id: number) : Observable<HttpResponse<MFood>>
   {
-    return this.http.get<MFood>(`${this.resourceUrl}/get-food/${id}`, {observe: 'response'});
+    return this.http.get<MFood>(`${this.resourceUrl}/${id}`, {observe: 'response'});
   }
   delete(id: number): Observable<HttpResponse<MFood>>
   {
-    return this.http.delete(`${this.resourceUrl}/delete-food/${id}`, {observe: 'response'});
+    return this.http.delete(`${this.resourceUrl}/${id}`, {observe: 'response'});
   }
   query(): Observable<MFood>
   {
-    return this.http.get<MFood>("http://localhost:8080/api/get-food");
+    return this.http.get<MFood>("http://localhost:3000/food");
   }
-  query2(): Observable<EntityArrayResponseType>
+  query2(req?: any): Observable<EntityArrayResponseType>
   {
-    // const options= createRequestOption(req);
-    console.log (this.http.get<MFood[]>("http://localhost:8080/api/get-food", {  observe: 'response' }));
-    return this.http.get<MFood[]>("http://localhost:8080/api/get-food", {  observe: 'response' });
-
+    const options = createRequestOption(req);
+    return this.http.get<MFood[]>(this.resourceUrl, { params: options, observe: 'response' });
   }
 }
