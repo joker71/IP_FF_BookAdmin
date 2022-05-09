@@ -1,53 +1,104 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-
-import { AppComponent } from './app.component';
-import { ToastrModule } from 'ngx-toastr';
-import { FoodlistComponent } from './foodlist/foodlist.component';
-import { HttpClientModule } from '@angular/common/http';
-import { OrderModule } from 'ngx-order-pipe'; // <- import OrderModule
-import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { HashLocationStrategy, LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgxBootstrapIconsModule, allIcons } from 'ngx-bootstrap-icons';
-import { FoodaddComponent } from './foodadd/foodadd.component';
-import { ReactiveFormsModule } from '@angular/forms';  // <-- #1 import module
-import { FoodupdateComponent } from './foodupdate/foodupdate.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
-import { FooddeleteComponent } from './fooddelete/fooddelete.component';
-import { CommonModule } from '@angular/common';
+import {
+  PERFECT_SCROLLBAR_CONFIG,
+  PerfectScrollbarConfigInterface,
+  PerfectScrollbarModule,
+} from 'ngx-perfect-scrollbar';
+
+// Import routing module
 import { AppRoutingModule } from './app-routing.module';
-import { FoodviewComponent } from './foodview/foodview.component';
-import { FoodpageComponent } from './foodpage/foodpage.component';
 
+// Import app component
+import { AppComponent } from './app.component';
 
+// Import containers
+import {
+  DefaultFooterComponent,
+  DefaultHeaderComponent,
+  DefaultLayoutComponent,
+} from './containers';
 
+import {
+  AvatarModule,
+  BadgeModule,
+  BreadcrumbModule,
+  ButtonGroupModule,
+  ButtonModule,
+  CardModule,
+  DropdownModule,
+  FooterModule,
+  FormModule,
+  GridModule,
+  HeaderModule,
+  ListGroupModule,
+  NavModule,
+  ProgressModule,
+  SharedModule,
+  SidebarModule,
+  TabsModule,
+  UtilitiesModule,
+} from '@coreui/angular';
+
+import { IconModule, IconSetService } from '@coreui/icons-angular';
+
+const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
+  suppressScrollX: true,
+};
+
+const APP_CONTAINERS = [
+  DefaultFooterComponent,
+  DefaultHeaderComponent,
+  DefaultLayoutComponent,
+];
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    FoodlistComponent,
-    FoodaddComponent,
-    FoodupdateComponent,
-
-    FooddeleteComponent,
-    FoodviewComponent,
-    FoodpageComponent
-  ],
+  declarations: [AppComponent, ...APP_CONTAINERS],
   imports: [
     BrowserModule,
-    HttpClientModule,
-    TooltipModule.forRoot(),
-    OrderModule,
-    ToastrModule.forRoot(),
-    NgxBootstrapIconsModule.pick(allIcons),
     BrowserAnimationsModule,
+    AppRoutingModule,
+    AvatarModule,
+    BreadcrumbModule,
+    FooterModule,
+    DropdownModule,
+    GridModule,
+    HeaderModule,
+    SidebarModule,
+    IconModule,
+    PerfectScrollbarModule,
+    NavModule,
+    ButtonModule,
+    FormModule,
+    UtilitiesModule,
+    ButtonGroupModule,
     ReactiveFormsModule,
-    CommonModule,
-    AppRoutingModule, 
-
-  
+    SidebarModule,
+    SharedModule,
+    TabsModule,
+    ListGroupModule,
+    ProgressModule,
+    BadgeModule,
+    ListGroupModule,
+    CardModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    {
+      provide: LocationStrategy,
+      useClass: HashLocationStrategy,
+    },
+    {
+      provide: PERFECT_SCROLLBAR_CONFIG,
+      useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG,
+    },
+    IconSetService,
+    Title
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {
+}
