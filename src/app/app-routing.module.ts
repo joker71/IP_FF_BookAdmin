@@ -26,6 +26,18 @@ const routes: Routes = [
           import('./views/dashboard/dashboard.module').then((m) => m.DashboardModule)
       },
       {
+        path: 'product',
+        loadChildren: () => import('./pages/product/product.module').then((m) => m.ProductModule)
+      },
+      {
+        path: 'custom',
+        loadChildren: () => import('./pages/customer/customer.module').then((m) => m.CustomerModule)
+      },
+      {
+        path: 'cart',
+        loadChildren: () => import('./pages/cart/cart.module').then((m) => m.CartModule)
+      },
+      {
         path: 'theme',
         loadChildren: () =>
           import('./views/theme/theme.module').then((m) => m.ThemeModule)
