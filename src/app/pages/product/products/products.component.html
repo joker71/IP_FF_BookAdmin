@@ -1,1 +1,48 @@
-<p>products works!</p>
+<div class="container">
+  <div class="d-flex my-2">
+    <a href="#" routerLink="/product/add" class="btn btn-primary ms-auto">Create New Product</a>
+  </div>
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped  p-0 m-0">
+      <thead>
+      <tr>
+        <th scope="col" class="text-light">#</th>
+        <th scope="col" class="text-light">Tên</th>
+        <th scope="col" class="text-light">Giá</th>
+        <th scope="col" class="text-light">Phân mục</th>
+        <th scope="col" class="text-light">NXB</th>
+        <th scope="col" class="text-light">Tồn kho</th>
+        <th scope="col" class="text-light">Mã sản phẩm</th>
+        <th scope="col" class="text-light">Hành động</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr scope="row" *ngFor="let product of products">
+        <td>{{ product.book_id }}</td>
+        <td>{{ product.title}}</td>
+        <td>{{product.price}}.000</td>
+        <td>{{ product.catalogue.catalogue_name}}</td>
+        <td>{{ product.publisher.publisher_name }}</td>
+        <td>{{ product.stock }}</td>
+        <td>{{ product.isbn13 }}</td>
+        <td>
+          <button type="button" (click)="onView(product.book_id)" class="btn btn-primary m-1">
+            <i class="bi bi-bookmark "></i>
+          </button>
+          <button type="button" (click)="onEdit(product.book_id)" class="btn btn-success m-1">
+            <i class="bi bi-pencil-fill  text-light"></i>
+          </button>
+          <button type="button" (click)="onDelete(product.book_id)" class="btn btn-danger m-1">
+            <i class="bi bi-trash text-light"></i>
+          </button>
+        </td>
+      </tr>
+      <tr scope="row" *ngIf="products.length === 0">
+        <td colspan="6" class="text-center">No record found</td>
+      </tr>
+      </tbody>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="5" [length]="totalElements"
+                   (page)="nextPage($event)"></mat-paginator>
+  </div>
+</div>

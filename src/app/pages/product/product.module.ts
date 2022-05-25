@@ -11,10 +11,21 @@ import { ProductAddComponent } from './product-add/product-add.component';
 import { ProductUpdateComponent } from './product-update/product-update.component';
 import { StockComponent } from './stock/stock.component';
 import {RouterModule, Routes} from "@angular/router";
-import {ButtonsComponent} from "../../views/buttons/buttons/buttons.component";
-import {ButtonGroupsComponent} from "../../views/buttons/button-groups/button-groups.component";
-import {DropdownsComponent} from "../../views/buttons/dropdowns/dropdowns.component";
-
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import {MatPaginatorModule} from "@angular/material/paginator";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {
+  ButtonGroupModule,
+  ButtonModule,
+  CardModule,
+  DropdownModule,
+  FormModule,
+  GridModule,
+  ListGroupModule,
+  SharedModule
+} from '@coreui/angular';
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatDatepickerModule} from "@angular/material/datepicker";
 
 const routes: Routes = [
   {
@@ -43,7 +54,7 @@ const routes: Routes = [
       },
       {
         path: 'update/:id',
-        component: PublisherUpdateComponent,
+        component: ProductUpdateComponent,
         data: {
           title: 'update product'
         }
@@ -108,7 +119,7 @@ const routes: Routes = [
     StockComponent
   ],
   imports: [
-    CommonModule, RouterModule.forChild(routes)
+    CommonModule, RouterModule.forChild(routes), ReactiveFormsModule, FormsModule, NgbModule, MatPaginatorModule, CardModule, GridModule, FormModule, MatFormFieldModule, MatDatepickerModule
   ]
 })
 export class ProductModule { }

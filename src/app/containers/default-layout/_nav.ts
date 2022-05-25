@@ -153,45 +153,45 @@ export const navItems: INavData[] = [
   //     },
   //   ]
   // },
-  // {
-  //   name: 'Forms',
-  //   url: '/forms',
-  //   iconComponent: { name: 'cil-notes' },
-  //   children: [
-  //     {
-  //       name: 'Form Control',
-  //       url: '/forms/form-control'
-  //     },
-  //     {
-  //       name: 'Select',
-  //       url: '/forms/select'
-  //     },
-  //     {
-  //       name: 'Checks & Radios',
-  //       url: '/forms/checks-radios'
-  //     },
-  //     {
-  //       name: 'Range',
-  //       url: '/forms/range'
-  //     },
-  //     {
-  //       name: 'Input Group',
-  //       url: '/forms/input-group'
-  //     },
-  //     {
-  //       name: 'Floating Labels',
-  //       url: '/forms/floating-labels'
-  //     },
-  //     {
-  //       name: 'Layout',
-  //       url: '/forms/layout'
-  //     },
-  //     {
-  //       name: 'Validation',
-  //       url: '/forms/validation'
-  //     }
-  //   ]
-  // },
+  {
+    name: 'Forms',
+    url: '/forms',
+    iconComponent: { name: 'cil-notes' },
+    children: [
+      {
+        name: 'Form Control',
+        url: '/forms/form-control'
+      },
+      {
+        name: 'Select',
+        url: '/forms/select'
+      },
+      {
+        name: 'Checks & Radios',
+        url: '/forms/checks-radios'
+      },
+      {
+        name: 'Range',
+        url: '/forms/range'
+      },
+      {
+        name: 'Input Group',
+        url: '/forms/input-group'
+      },
+      {
+        name: 'Floating Labels',
+        url: '/forms/floating-labels'
+      },
+      {
+        name: 'Layout',
+        url: '/forms/layout'
+      },
+      {
+        name: 'Validation',
+        url: '/forms/validation'
+      }
+    ]
+  },
   // {
   //   name: 'Charts',
   //   url: '/charts',

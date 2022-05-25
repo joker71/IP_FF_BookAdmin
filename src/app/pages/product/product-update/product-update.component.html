@@ -1,1 +1,57 @@
-<p>product-update works!</p>
+
+<form cForm class="row g-3" [formGroup]="formGroup" >
+  <c-col [md]="6">
+    <label cLabel for="inputEmail4">Tên tác phẩm</label>
+    <input cFormControl id="inputEmail4" type="text" formControlName="titile" />
+  </c-col>
+  <c-col [md]="6">
+    <label cLabel for="inputPassword4">Mã sản phẩm </label>
+    <input cFormControl id="inputPassword4" type="text" formControlName="isbn13"  />
+  </c-col>
+  <c-col [md]="6">
+    <label cLabel for="inputEmail4">Tác giả</label>
+    <input cFormControl  type="text"  />
+  </c-col>
+  <c-col [md]="6">
+    <label cLabel for="inputPassword4">NXB </label>
+    <input cFormControl type="text" formControlName="publisher"  />
+  </c-col>
+  <c-col [md]="6">
+    <label cLabel for="inputEmail4">Ngôn ngữ</label>
+    <input cFormControl  type="text" formControlName="language"  />
+  </c-col>
+  <c-col [md]="6">
+    <label cLabel for="inputPassword4">Phân loại </label>
+    <input cFormControl  type="text" formControlName="catalogue" />
+  </c-col>
+  <c-col [md]="6">
+    <label cLabel for="inputEmail4">Giá</label>
+    <input cFormControl  type="text" formControlName="price" />
+  </c-col>
+  <c-col [md]="6">
+    <label cLabel for="inputPassword4">Tồn kho </label>
+    <input cFormControl  type="text" formControlName="stock" />
+  </c-col>
+  <c-col [md]="6">
+    <label cLabel for="inputCity">Ngày ra mắt</label>
+<!--    <input cFormControl id="inputCity" formControlName="publication_date"  />-->
+    <div class="input-group">
+      <input class="form-control"
+             placeholder="yyyy-mm-dd"
+             id="inputCity"
+             formControlName="publication_date"
+             name="dp" [value]="formatter.format(fromDate)"
+             ngbDatepicker #d="ngbDatepicker">
+      <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
+        <i class="bi bi-calendar3"></i>
+      </button>
+    </div>
+  </c-col>
+  <c-col [md]="2">
+    <label cLabel for="inputZip">Số trang</label>
+    <input cFormControl id="inputZip" formControlName="nume_page" />
+  </c-col>
+    <c-col [xs]="12">
+      <button cButton type="submit" class="btn btn-primary" (click)="createFromForm()">Sửa đổi</button>
+    </c-col>
+</form>

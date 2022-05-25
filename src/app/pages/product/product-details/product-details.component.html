@@ -1,1 +1,52 @@
-<p>product-details works!</p>
+
+<form cForm class="row g-3" [formGroup]="formGroup" >
+  <c-col [md]="6">
+    <label cLabel for="inputEmail4">Tên tác phẩm</label>
+    <input cFormControl id="inputEmail4" type="text" formControlName="titile" [attr.disabled]=false />
+  </c-col>
+  <c-col [md]="6">
+    <label cLabel for="inputPassword4">Mã sản phẩm </label>
+    <input cFormControl id="inputPassword4" type="text" formControlName="isbn13" [attr.disabled]=false />
+  </c-col>
+  <c-col [md]="6">
+    <label cLabel for="inputEmail4">Tác giả</label>
+    <input cFormControl  type="text" [attr.disabled]=false />
+  </c-col>
+  <c-col [md]="6">
+    <label cLabel for="inputPassword4">NXB </label>
+    <input cFormControl type="text" formControlName="publisher" [attr.disabled]=false />
+  </c-col>
+  <c-col [md]="6">
+    <label cLabel for="inputEmail4">Ngôn ngữ</label>
+    <input cFormControl  type="text" formControlName="language" [attr.disabled]=false />
+  </c-col>
+  <c-col [md]="6">
+    <label cLabel for="inputPassword4">Phân loại </label>
+    <input cFormControl  type="text" formControlName="catalogue" [attr.disabled]=false />
+  </c-col>
+  <c-col [md]="6">
+    <label cLabel for="inputEmail4">Giá</label>
+    <input cFormControl  type="text" formControlName="price" [attr.disabled]=false />
+  </c-col>
+  <c-col [md]="6">
+    <label cLabel for="inputPassword4">Tồn kho </label>
+    <input cFormControl  type="text" formControlName="stock" [attr.disabled]=false />
+  </c-col>
+  <c-col [md]="6">
+    <label cLabel for="inputCity">Ngày ra mắt</label>
+    <input cFormControl id="inputCity" formControlName="publication_date" [attr.disabled]=false />
+  </c-col>
+  <c-col [md]="2">
+    <label cLabel for="inputZip">Số trang</label>
+    <input cFormControl id="inputZip" formControlName="nume_page" [attr.disabled]=false/>
+  </c-col>
+<!--  <c-col [xs]="12">-->
+<!--    <c-form-check>-->
+<!--      <input cFormCheckInput id="gridCheck" name="gridCheck" type="checkbox" />-->
+<!--      <label cFormCheckLabel for="gridCheck">Check me out</label>-->
+<!--    </c-form-check>-->
+<!--  </c-col>-->
+<!--  <c-col [xs]="12">-->
+<!--    <button cButton type="submit">Sign in</button>-->
+<!--  </c-col>-->
+</form>
