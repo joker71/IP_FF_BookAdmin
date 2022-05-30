@@ -26,6 +26,7 @@ import {
 } from '@coreui/angular';
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatDatepickerModule} from "@angular/material/datepicker";
+import { DetailsComponent } from './stock/details/details.component';
 
 const routes: Routes = [
   {
@@ -116,7 +117,8 @@ const routes: Routes = [
     ProductDeleteComponent,
     ProductAddComponent,
     ProductUpdateComponent,
-    StockComponent
+    StockComponent,
+    DetailsComponent
   ],
   imports: [
     CommonModule, RouterModule.forChild(routes), ReactiveFormsModule, FormsModule, NgbModule, MatPaginatorModule, CardModule, GridModule, FormModule, MatFormFieldModule, MatDatepickerModule

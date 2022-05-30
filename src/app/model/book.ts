@@ -14,7 +14,7 @@ export class Book {
   publisher: Publisher;
   img: string;
   price: number;
-
+  delete_flag: number
   constructor(
     book_id: number,
     title: string,
@@ -27,6 +27,7 @@ export class Book {
     publisher: Publisher,
     price: number,
     img: string,
+    delete_flag: number
   ) {
     this.price = price;
     this.img = img;
@@ -39,5 +40,6 @@ export class Book {
     this.publication_date = publication_date;
     this.publisher = publisher;
     this.title = title;
+    this.delete_flag = delete_flag
   }
 }

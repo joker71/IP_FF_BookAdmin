@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
+import {BookServiceService} from "../../../serves/book-service.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-product-delete',
@@ -7,9 +10,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductDeleteComponent implements OnInit {
 
-  constructor() { }
+  @Input() id: any
+  constructor(public activeModal: NgbActiveModal,
+              public router: Router,
+              public bookService: BookServiceService) { }
 
   ngOnInit(): void {
   }
 
+  onDelete(){
+    this.bookService.delete(this.id).subscribe(
+      () => {
+        this.activeModal.close('Close click')
+        this.router.navigate(['/product/products'])
+      }
+    );
+  }
+  onCancel(){
+    this.activeModal.close('Close click')
+  }
 }

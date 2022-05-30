@@ -13,6 +13,7 @@
         <th scope="col" class="text-light">NXB</th>
         <th scope="col" class="text-light">Tồn kho</th>
         <th scope="col" class="text-light">Mã sản phẩm</th>
+        <th scope="col" class="text-light">Tình trạng</th>
         <th scope="col" class="text-light">Hành động</th>
       </tr>
       </thead>
@@ -24,6 +25,11 @@
         <td>{{ product.catalogue.catalogue_name}}</td>
         <td>{{ product.publisher.publisher_name }}</td>
         <td>{{ product.stock }}</td>
+        <td>
+          <p *ngIf="product.delete_flag === 1" class="text-danger">Ngừng bán</p>
+          <p *ngIf="product.delete_flag === 0" class="text-primary">Hoạt động</p>
+
+        </td>
         <td>{{ product.isbn13 }}</td>
         <td>
           <button type="button" (click)="onView(product.book_id)" class="btn btn-primary m-1">

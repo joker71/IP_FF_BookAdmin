@@ -45,7 +45,7 @@ export class BookServiceService {
   }
 
   delete(id: number): Observable<HttpResponse<{}>> {
-    return this.http.delete(`${this.rousourceUrl}/delete/${id}`, {observe: 'response'});
+    return this.http.put(`${this.rousourceUrl}delete/${id}`, null,{observe: 'response'});
   }
 
   getStock(req: any): Observable<EntityArrayResponseTypeStock> {

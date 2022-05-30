@@ -5,6 +5,8 @@ import { ModalService } from '@coreui/angular';
 import { Book } from 'src/app/model/book';
 import { Stock } from 'src/app/model/stock';
 import { BookServiceService } from 'src/app/serves/book-service.service';
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {DetailsComponent} from "./details/details.component";
 
 @Component({
   selector: 'app-stock',
@@ -20,7 +22,7 @@ export class StockComponent implements OnInit {
     protected productService: BookServiceService,
     protected router: Router,
     protected activeRouter: ActivatedRoute,
-    protected modalService: ModalService
+    protected modalService: NgbModal
   ) {
   }
 
@@ -53,9 +55,10 @@ export class StockComponent implements OnInit {
   }
 
   onDelete(id: number){
-
   }
-  onView(id: number){
+  onView(stock: Stock){
+    const modalRef = this.modalService.open(DetailsComponent,  { size: 'lg' })
+    modalRef.componentInstance.stock = stock;
   }
   onEdit(id: number){
   }

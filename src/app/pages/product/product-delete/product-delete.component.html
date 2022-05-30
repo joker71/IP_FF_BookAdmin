@@ -1,1 +1,12 @@
-<p>product-delete works!</p>
+<div class="modal-header">
+  <h4 class="modal-title">Hi there!</h4>
+  <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+</div>
+<div class="modal-body justify-content-center">
+  <h3 class="text-danger">Bạn muốn xóa sản phẩm này</h3>
+  <p class="text-info">Hành động này không thể khôi phục</p>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-warning" (click)=onCancel()>Cancel</button>
+  <button type="button" class="btn btn-danger" (click)= onDelete()>Delete</button>
+</div>

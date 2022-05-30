@@ -5,6 +5,9 @@ import {BookServiceService} from "../../../serves/book-service.service";
 import {PageEvent} from '@angular/material/paginator';
 import {ActivatedRoute, Router} from "@angular/router";
 import {ModalService} from "@coreui/angular";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {DetailsComponent} from "../stock/details/details.component";
+import {ProductDeleteComponent} from "../product-delete/product-delete.component";
 
 
 @Component({
@@ -21,7 +24,7 @@ export class ProductsComponent implements OnInit {
     protected productService: BookServiceService,
     protected router: Router,
     protected activeRouter: ActivatedRoute,
-    protected modalService: ModalService
+    protected modalService: NgbModal
   ) {
   }
 
@@ -52,7 +55,8 @@ export class ProductsComponent implements OnInit {
   }
 
   onDelete(id: number){
-
+    const modalRef = this.modalService.open(ProductDeleteComponent,  { size: 'lg' })
+    modalRef.componentInstance.id = id;
   }
   onView(id: number){
     this.router.navigate([`/product/details/${id}`]);
