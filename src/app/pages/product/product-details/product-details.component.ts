@@ -14,7 +14,6 @@ export class ProductDetailsComponent implements OnInit {
   id!: number;
   product: Book | null=null;
 
-
   constructor(
     protected activeRouter: ActivatedRoute,
     protected service: BookServiceService,

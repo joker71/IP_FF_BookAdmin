@@ -4,10 +4,12 @@ import {Book} from "../model/book";
 import {environment} from "../../environments/environment";
 import {Observable} from "rxjs";
 import {createRequestOption} from "./reques-utils";
+import {Stock} from "../model/stock";
 
 type EntityResponseType = HttpResponse<Book>;
+type EntityResponseTypeStock = HttpResponse<Stock>;
 type EntityArrayResponseType = HttpResponse<Book[]>;
-
+type EntityArrayResponseTypeStock = HttpResponse<Stock[]>;
 @Injectable({
   providedIn: 'root'
 })
@@ -46,4 +48,8 @@ export class BookServiceService {
     return this.http.delete(`${this.rousourceUrl}/delete/${id}`, {observe: 'response'});
   }
 
+  getStock(req: any): Observable<EntityArrayResponseTypeStock> {
+    const opition = createRequestOption(req);
+    return this.http.get<Stock[]>(this.rousourceUrl + 'stock', {observe: 'response'});
+  }
 }

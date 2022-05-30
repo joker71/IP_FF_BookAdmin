@@ -1,1 +1,36 @@
-<p>stock works!</p>
+<div class="container">
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped  p-0 m-0">
+        <thead>
+        <tr>
+          <th scope="col" class="text-light">#</th>
+          <th scope="col" class="text-light">Mã Sách</th>
+          <th scope="col" class="text-light">Giá Nhập</th>
+          <th scope="col" class="text-light">Số lượng</th>
+          <th scope="col" class="text-light">Ngày</th>
+          <th scope="col" class="text-light d-flex justify-content-center">Hành động</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr scope="row" *ngFor="let product of products">
+          <td>{{ product.store_id }}</td>
+          <td>{{ product.book_id}}</td>
+          <td>{{product.input_price}}.000</td>
+          <td>{{ product.number_item}}</td>
+          <td>{{ product.statusDate }}</td>
+          <td class="d-flex justify-content-center">
+            <button type="button" (click)="onView(product.book_id)" class="btn btn-primary m-1">
+              <i class="bi bi-bookmark "></i> Xem chi tiết
+            </button>
+          </td>
+        </tr>
+        <tr scope="row" *ngIf="products.length === 0">
+          <td colspan="6" class="text-center">No record found</td>
+        </tr>
+        </tbody>
+      </table>
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="5" [length]="totalElements"
+                     (page)="nextPage($event)"></mat-paginator>
+    </div>
+  </div>
+  
