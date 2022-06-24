@@ -1,57 +1,138 @@
 
-<form cForm class="row g-3" [formGroup]="formGroup" >
-  <c-col [md]="6">
-    <label cLabel for="inputEmail4">Tên tác phẩm</label>
-    <input cFormControl id="inputEmail4" type="text" formControlName="titile" />
-  </c-col>
-  <c-col [md]="6">
-    <label cLabel for="inputPassword4">Mã sản phẩm </label>
-    <input cFormControl id="inputPassword4" type="text" formControlName="isbn13"  />
-  </c-col>
-  <c-col [md]="6">
-    <label cLabel for="inputEmail4">Tác giả</label>
-    <input cFormControl  type="text"  />
-  </c-col>
-  <c-col [md]="6">
-    <label cLabel for="inputPassword4">NXB </label>
-    <input cFormControl type="text" formControlName="publisher"  />
-  </c-col>
-  <c-col [md]="6">
-    <label cLabel for="inputEmail4">Ngôn ngữ</label>
-    <input cFormControl  type="text" formControlName="language"  />
-  </c-col>
-  <c-col [md]="6">
-    <label cLabel for="inputPassword4">Phân loại </label>
-    <input cFormControl  type="text" formControlName="catalogue" />
-  </c-col>
-  <c-col [md]="6">
-    <label cLabel for="inputEmail4">Giá</label>
-    <input cFormControl  type="text" formControlName="price" />
-  </c-col>
-  <c-col [md]="6">
-    <label cLabel for="inputPassword4">Tồn kho </label>
-    <input cFormControl  type="text" formControlName="stock" />
-  </c-col>
-  <c-col [md]="6">
-    <label cLabel for="inputCity">Ngày ra mắt</label>
-<!--    <input cFormControl id="inputCity" formControlName="publication_date"  />-->
-    <div class="input-group">
-      <input class="form-control"
-             placeholder="yyyy-mm-dd"
-             id="inputCity"
-             formControlName="publication_date"
-             name="dp" [value]="formatter.format(fromDate)"
-             ngbDatepicker #d="ngbDatepicker">
-      <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
-        <i class="bi bi-calendar3"></i>
-      </button>
+<!--<form cForm class="row g-3" [formGroup]="formGroup" >-->
+<!--  <c-col [md]="6">-->
+<!--    <label cLabel for="inputEmail4">Tên tác phẩm</label>-->
+<!--    <input cFormControl id="inputEmail4" type="text" formControlName="titile" />-->
+<!--  </c-col>-->
+<!--  <c-col [md]="6">-->
+<!--    <label cLabel for="inputPassword4">Mã sản phẩm </label>-->
+<!--    <input cFormControl id="inputPassword4" type="text" formControlName="isbn13"  />-->
+<!--  </c-col>-->
+<!--  <c-col [md]="6">-->
+<!--    <label cLabel for="inputEmail4">Tác giả</label>-->
+<!--    <input cFormControl  type="text"  />-->
+<!--  </c-col>-->
+<!--  <c-col [md]="6">-->
+<!--    <label cLabel for="inputPassword4">NXB </label>-->
+<!--    <input cFormControl type="text" formControlName="publisher"  />-->
+<!--  </c-col>-->
+<!--  <c-col [md]="6">-->
+<!--    <label cLabel for="inputEmail4">Ngôn ngữ</label>-->
+<!--    <input cFormControl  type="text" formControlName="language"  />-->
+<!--  </c-col>-->
+<!--  <c-col [md]="6">-->
+<!--    <label cLabel for="inputPassword4">Phân loại </label>-->
+<!--    <input cFormControl  type="text" formControlName="catalogue" />-->
+<!--  </c-col>-->
+<!--  <c-col [md]="6">-->
+<!--    <label cLabel for="inputEmail4">Giá</label>-->
+<!--    <input cFormControl  type="text" formControlName="price" />-->
+<!--  </c-col>-->
+<!--  <c-col [md]="6">-->
+<!--    <label cLabel for="inputPassword4">Tồn kho </label>-->
+<!--    <input cFormControl  type="text" formControlName="stock" />-->
+<!--  </c-col>-->
+<!--  <c-col [md]="6">-->
+<!--    <label cLabel for="inputCity">Ngày ra mắt</label>-->
+<!--&lt;!&ndash;    <input cFormControl id="inputCity" formControlName="publication_date"  />&ndash;&gt;-->
+<!--    <div class="input-group">-->
+<!--      <input class="form-control"-->
+<!--             placeholder="yyyy-mm-dd"-->
+<!--             id="inputCity"-->
+<!--             formControlName="publication_date"-->
+<!--             name="dp" [[value]]="formatter.format(fromDate)"-->
+<!--             ngbDatepicker #d="ngbDatepicker">-->
+<!--      <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">-->
+<!--        <i class="bi bi-calendar3"></i>-->
+<!--      </button>-->
+<!--    </div>-->
+<!--  </c-col>-->
+<!--  <c-col [md]="2">-->
+<!--    <label cLabel for="inputZip">Số trang</label>-->
+<!--    <input cFormControl id="inputZip" formControlName="nume_page" />-->
+<!--  </c-col>-->
+<!--    <c-col [xs]="12">-->
+<!--      <button cButton type="submit" class="btn btn-primary" (click)="createFromForm()">Sửa đổi</button>-->
+<!--    </c-col>-->
+<!--</form>-->
+<div class="main-content row">
+  <form cForm class="row" [formGroup]="formGroup">
+    <div class="col-8 row g-3 bg-white rounded m-3 p-3">
+      <c-col [md]="6">
+        <label cLabel for="inputEmail4">Tên tác phẩm</label>
+        <input cFormControl id="inputEmail4" type="text" formControlName="title"     />
+      </c-col>
+      <c-col [md]="6">
+        <label cLabel for="inputPassword4">Mã sản phẩm </label>
+        <input cFormControl id="inputPassword4" type="text" formControlName="isbn13"/>
+      </c-col>
+      <c-col [md]="6">
+        <label cLabel for="inputAuthor">Tác giả</label>
+        <select formControlName="author"  class="form-select" id="inputAuthor">
+          <option *ngFor="let author of authors" [value]="author">{{author.author_name}}</option>
+        </select>
+      </c-col>
+      <c-col [md]="6">
+        <label cLabel for="inputPassword4">NXB </label>
+        <select formControlName="publisher" class="form-select" >
+          <option *ngFor="let item of publishers"  [value]="item">{{item.publisher_name}}</option>
+        </select>
+      </c-col>
+      <c-col [md]="6">
+        <label cLabel for="inputEmail4">Ngôn ngữ</label>
+        <select formControlName="language"  class="form-select" >
+          <option *ngFor="let item of languages"    [value]="item">{{item.language_name}}</option>
+        </select>
+      </c-col>
+      <c-col [md]="6">
+        <label cLabel for="inputPassword4">Phân loại </label>
+        <select formControlName="catalogue" class="form-select" >
+          <option *ngFor="let item of catalogues"    [value]="item">{{item.catalogue_name}}</option>
+        </select>
+      </c-col>
+      <c-col [md]="6">
+        <label cLabel for="inputEmail4">Giá</label>
+        <input cFormControl type="text" formControlName="price"     />
+      </c-col>
+      <c-col [md]="3">
+        <label cLabel for="inputPassword4">Tồn kho </label>
+        <input cFormControl type="text" formControlName="stock" />
+      </c-col>
+      <c-col [md]="3">
+        <label cLabel for="inputZip">Số trang</label>
+        <input cFormControl type="number" id="inputZip" formControlName="num_page"     />
+      </c-col>
+      <c-col [md]="6">
+        <label cLabel for="inputCity">Ngày ra mắt</label>
+        <!--    <input cFormControl id="inputCity" formControlName="publication_date"  />-->
+        <div class="input-group">
+          <input class="form-control"
+                 placeholder="yyyy-mm-dd"
+                 id="inputCity"
+                 formControlName="publication_date"
+                 name="dp" [value]="formatter.format(fromDate)"
+                 ngbDatepicker #d="ngbDatepicker">
+          <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
+            <i class="bi bi-calendar3"></i>
+          </button>
+        </div>
+      </c-col>
+      <c-col [md]="6">
+        <label cLabel for="inputImg">Link ảnh</label>
+        <input type="file" cFormControl id="inputImg" formControlName="img"  (change)="onFileSelected($event)"   />
+      </c-col>
+
+
+      <c-col [xs]="12">
+        <button cButton type="submit" class="btn btn-primary" (click)="createFromForm()">Sửa đổi</button>
+      </c-col>
     </div>
-  </c-col>
-  <c-col [md]="2">
-    <label cLabel for="inputZip">Số trang</label>
-    <input cFormControl id="inputZip" formControlName="nume_page" />
-  </c-col>
-    <c-col [xs]="12">
-      <button cButton type="submit" class="btn btn-primary" (click)="createFromForm()">Sửa đổi</button>
-    </c-col>
-</form>
+    <div class="col-3 row g-3 bg-white rounded p-1">
+      <img src={{product?.img}} alt="..." style="max-height: 400px" class="img-thumbnail img-fluid"/>
+      <div class="d-flex justify-content-center m-1">
+        {{product?.title}}
+      </div>
+    </div>
+  </form>
+</div>
+

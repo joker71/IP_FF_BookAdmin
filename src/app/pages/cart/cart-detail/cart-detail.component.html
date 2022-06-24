@@ -1,1 +1,46 @@
-<p>cart-detail works!</p>
+<div class="container row">
+  <div class=" col-4 row g-3 bg-white rounded m-3 p-3">
+    <div class="row">
+      <span class="font-weight-normal">
+        <p class="font-weight-bold" style="font-weight: bold">Id:</p>
+        <p class="font-weight-bold">{{Cart.id}}</p>
+      </span>
+      <span>
+        <p class="font-weight-bold" style="font-weight: bold">Khách hàng:</p>
+        <p class="font-weight-bold">{{Cart.custom.fist_name}} {{Cart.custom.last_name}}</p>
+      </span>
+    </div>
+
+    <span class="font-weight-normal">
+      <p class="font-weight-bold" style="font-weight: bold">Email:</p>
+      <p class="font-weight-bold">{{Cart.custom.email}} </p>
+    </span>
+    <span class="font-weight-normal">
+      <p class="font-weight-bold" style="font-weight: bold">Địa chỉ:</p>
+      {{Cart.custom.address[0].streetNumber}}, {{Cart.custom.address[0].streetName}}
+      , {{Cart.custom.address[0].city}}</span>
+  </div>
+  <div class=" col-7 row g-3 bg-white rounded m-3 p-3">
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped  p-0 m-0">
+        <thead>
+        <tr>
+          <th scope="col" class="text-light">#</th>
+          <th scope="col" class="text-light">Sản phẩm</th>
+          <th scope="col" class="text-light">Giá</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr scope="row" *ngFor="let product of CartLine">
+          <td>{{ product.line_id }}</td>
+          <td>{{ product.book.title}}</td>
+          <td>{{product.price}}.000</td>
+
+        </tr>
+        <tr scope="row" *ngIf="CartLine.length === 0">
+          <td colspan="6" class="text-center">No record found</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

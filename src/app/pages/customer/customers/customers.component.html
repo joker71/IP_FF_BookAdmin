@@ -1,1 +1,36 @@
-<p>customers works!</p>
+<div class="container">
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped  p-0 m-0">
+      <thead>
+      <tr>
+        <th scope="col" class="text-light">#</th>
+        <th scope="col" class="text-light">Họ</th>
+        <th scope="col" class="text-light">Tên</th>
+        <th scope="col" class="text-light">Email</th>
+        <th scope="col" class="text-light">Địa chỉ</th>
+        <th scope="col" class="text-light">Chi tiết</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr scope="row" *ngFor="let item of customers">
+        <td>{{ item.customer_id }}</td>
+        <td>{{ item.fist_name }}</td>
+        <td>{{ item.last_name }}</td>
+        <td>{{ item.email }}</td>
+        <td *ngIf="item.address">{{ item.address[0].streetNumber}}, {{ item.address[0].streetName}}, {{item.address[0].city}} </td>
+        <td>
+          <button type="button" (click)="onView(item.customer_id)" class="btn btn-primary m-1">
+            <i class="bi bi-bookmark "></i>
+          </button>
+
+        </td>
+      </tr>
+      <tr scope="row" *ngIf="customers.length === 0">
+        <td colspan="6" class="text-center">No record found</td>
+      </tr>
+      </tbody>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="5" [length]="totalElements"
+                   (page)="nextPage($event)"></mat-paginator>
+  </div>
+</div>

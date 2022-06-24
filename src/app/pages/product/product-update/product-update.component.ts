@@ -1,10 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {Book} from "../../../model/book";
 import {BookServiceService} from "../../../serves/book-service.service";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {NgbCalendar, NgbDate, NgbDateParserFormatter, NgbDateStruct} from "@ng-bootstrap/ng-bootstrap";
 import {numberOfBytes} from "ng-jhipster/directive/number-of-bytes";
+import {Catalogue} from "../../../model/catalogue";
+import {UntilsService} from "../../../serves/untils.service";
 
 @Component({
   selector: 'app-product-update',
@@ -18,6 +20,14 @@ export class ProductUpdateComponent implements OnInit {
   product: Book | null = null;
   model!: NgbDateStruct;
   fromDate!: NgbDate | null;
+  catalogues: any = [];
+  languages: any = [];
+  authors: any = [];
+  publishers: any = [];
+  hasFile: boolean = false;
+  fileName = '';
+  upFile: any;
+  formData: any
   readonly DELIMITER = '-';
 
 
@@ -26,21 +36,24 @@ export class ProductUpdateComponent implements OnInit {
     protected service: BookServiceService,
     protected fb: FormBuilder,
     public formatter: NgbDateParserFormatter,
+    protected utilServices: UntilsService,
+    protected router: Router
   ) {
   }
 
   formGroup: FormGroup = this.fb.group({
-    book_id: [],
-    titile: [],
-    stock: [],
-    isbn13: [],
-    nume_page: [],
-    publication_date: [],
-    catalogue: [],
-    publisher: [],
-    language: [],
-    price: [],
-    img: []
+    book_id: [''],
+    title: [''],
+    stock: [''],
+    isbn13: [''],
+    num_page: [''],
+    publication_date: [''],
+    catalogue: [''],
+    publisher: [''],
+    language: [''],
+    price: [''],
+    img: [''],
+    author: ['']
   })
 
   ngOnInit(): void {
@@ -49,38 +62,83 @@ export class ProductUpdateComponent implements OnInit {
     this.service.find(this.id).subscribe(
       (res) => {
         this.product = res.body
-        let date = new Date(this.product?.publication_date !);
-        this.fromDate = new NgbDate(
-          date.getFullYear(),
-          date.getMonth(),
-          date.getDay())
         this.formGroup?.patchValue({
           book_id: this.product?.book_id,
-          titile: this.product?.title,
+          title: this.product?.title,
           stock: this.product?.stock,
           isbn13: this.product?.isbn13,
-          nume_page: this.product?.num_pages,
-          catalogue: this.product?.catalogue.catalogue_name,
-          publisher: this.product?.publisher.publisher_name,
-          language: this.product?.language.language_name,
+          author: this.product?.author,
+          num_page: this.product?.num_pages,
+          catalogue: this.product?.catalogue,
+          publisher: this.product?.publisher,
+          language: this.product?.language,
           price: this.product?.price,
           publication_date: this.fromDate,
           img: this.product?.img
         })
-        console.log(date)
 
       }
     )
+    this.utilServices.getCatalogue().subscribe(
+      (res) => {
+        this.catalogues = res.body;
+        console.log(res)
+      }
+    )
+    this.utilServices.getPublisher().subscribe(
+      (res) => {
+        this.publishers = res.body;
+        console.log(res)
+      }
+    )
+    this.utilServices.getAuthor().subscribe(
+      (res) => {
+        this.authors = res.body;
+        console.log(res)
+      }
+    )
+    this.utilServices.getLanguage().subscribe(
+      (res) => {
+        this.languages = res.body;
+        console.log(res)
+      }
+    )
+
   }
+
 
   public createFromForm() {
     let bookModel = this.formGroup.value;
+    console.log(this.formGroup);
     bookModel.publication_date = this.toModel(bookModel.publication_date);
     console.log(bookModel);
     this.service.update(bookModel).subscribe(
       () => alert("Scucess"),
       () => alert("Error")
     )
+    if (this.hasFile && this.product?.book_id) {
+      this.service.upFile(this.formData, this.product?.book_id).subscribe(
+        () => alert("Scucess"),
+        () => alert("Error")
+      )
+    }
+    setTimeout(()=>{                           //<<<---using ()=> syntax
+      this.router.navigate([`/product/details/${this.product?.book_id}`])
+    }, 3000);
+  }
+
+  onFileSelected(event: any) {
+    this.hasFile = true;
+    const file: File = event.target.files[0];
+
+    if (file) {
+
+      this.fileName = file.name;
+      this.upFile = file;
+      const formData = new FormData();
+      formData.append("file", file);
+      this.formData = formData;
+    }
   }
 
   toModel(date: NgbDateStruct | null): string | null {

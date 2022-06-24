@@ -1,6 +1,7 @@
 import {Catalogue} from "./catalogue";
 import {Language} from "./language";
 import {Publisher} from "./publisher";
+import {Author} from "./author";
 
 export class Book {
   book_id: number;
@@ -14,6 +15,7 @@ export class Book {
   publisher: Publisher;
   img: string;
   price: number;
+  author: Author;
   delete_flag: number
   constructor(
     book_id: number,
@@ -27,7 +29,8 @@ export class Book {
     publisher: Publisher,
     price: number,
     img: string,
-    delete_flag: number
+    delete_flag: number,
+    author: Author
   ) {
     this.price = price;
     this.img = img;
@@ -40,6 +43,7 @@ export class Book {
     this.publication_date = publication_date;
     this.publisher = publisher;
     this.title = title;
-    this.delete_flag = delete_flag
+    this.delete_flag = delete_flag;
+    this.author = author;
   }
 }

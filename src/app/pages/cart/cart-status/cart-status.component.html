@@ -1,1 +1,32 @@
-<p>cart-status works!</p>
+<div class="modal-header">
+  <h4 class="modal-title">Hi there!</h4>
+  <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+</div>
+<div class="modal-body justify-content-center">
+  <div>
+    <label for="Book" class="form-label">Sản phẩm</label>
+    <select id="Book" class="form-select" aria-label="Default select example">
+      <option selected>01 - Cừu non</option>
+      <option value="1">Hủy đơn</option>
+      <option value="2">Trả về</option>
+      <option value="3">Đóng gói</option>
+    </select>
+  </div>
+  <div class="row">
+    <div class="col-5">
+      <label for="exampleFormControlInput1" class="form-label">Số lượng</label>
+      <input type="number" class="form-control" id="exampleFormControlInput1">
+    </div>
+    <div class="col-5">
+      <label for="exampleFormControlInput2" class="form-label">Giá nhập</label>
+      <input type="number" class="form-control" id="exampleFormControlInput2">
+    </div>
+
+  </div>
+
+</div>
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-warning" >Hủy</button>
+  <button type="button" class="btn btn-danger" >Cập nhật</button>
+</div>

@@ -31,7 +31,8 @@ export class ProductDetailsComponent implements OnInit {
     publisher: [],
     language: [],
     price: [],
-    img: []
+    img: [],
+    author: []
   })
   ngOnInit(): void {
     let pId = this.activeRouter.snapshot.paramMap.get('id');
@@ -50,6 +51,7 @@ export class ProductDetailsComponent implements OnInit {
           publisher: this.product?.publisher.publisher_name,
           language: this.product?.language.language_name,
           price: this.product?.price,
+          author: this.product?.author.author_name
         })
       }
     )

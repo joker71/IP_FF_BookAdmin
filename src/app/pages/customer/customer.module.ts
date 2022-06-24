@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { CustomersComponent } from './customers/customers.component';
 import { CustomerDetailComponent } from './customer-detail/customer-detail.component';
 import {Router, RouterModule, Routes} from "@angular/router";
+import {MatPaginatorModule} from "@angular/material/paginator";
 
 
 
@@ -41,7 +42,7 @@ const routes: Routes = [
     CustomerDetailComponent,
   ],
   imports: [
-    CommonModule, RouterModule.forChild(routes)
+    CommonModule, RouterModule.forChild(routes), MatPaginatorModule
   ]
 })
 export class CustomerModule { }

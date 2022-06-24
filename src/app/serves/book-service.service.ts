@@ -16,6 +16,7 @@ type EntityArrayResponseTypeStock = HttpResponse<Stock[]>;
 export class BookServiceService {
 
   public rousourceUrl = environment.apiUrl + 'book/';
+  public rousourceUrl2 = environment.apiUrl ;
   public observeType = 'response';
 
   constructor(protected http: HttpClient) {
@@ -52,4 +53,8 @@ export class BookServiceService {
     const opition = createRequestOption(req);
     return this.http.get<Stock[]>(this.rousourceUrl + 'stock', {observe: 'response'});
   }
+  upFile(file: any, id: number): Observable<any>{
+    return this.http.post(`${this.rousourceUrl2}profile/pic/${id}`, file,{observe: 'response'})
+  }
+
 }

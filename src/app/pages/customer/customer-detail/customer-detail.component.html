@@ -1,1 +1,62 @@
-<p>customer-detail works!</p>
+<div class="container row">
+  <div class=" col-4 row g-3 bg-white rounded m-3 p-3">
+    <span class="font-weight-normal">
+      <p class="font-weight-bold" style="font-weight: bold">Id:</p>
+      <p class="font-weight-bold" >{{Customer.customer_id}}</p>
+    </span>
+    <span>
+      <p class="font-weight-bold" style="font-weight: bold">Khách hàng:</p>
+      <p class="font-weight-bold" >{{Customer.fist_name}} {{Customer.last_name}}</p>
+    </span>
+    <span class="font-weight-normal">
+      <p class="font-weight-bold" style="font-weight: bold">Email:</p>
+      <p class="font-weight-bold">{{Customer.email}} </p>
+    </span>
+    <span class="font-weight-normal">
+      <p class="font-weight-bold" style="font-weight: bold">Địa chỉ 1:</p>
+      {{Customer.address[0].streetNumber}}, {{Customer.address[0].streetName}}, {{Customer.address[0].city}}</span>
+    <span class="font-weight-normal">
+      <p class="font-weight-bold" style="font-weight: bold" *ngIf="Customer.address[1]">Địa chỉ 2:</p>
+      {{Customer.address[1].streetNumber}}, {{Customer.address[1].streetName}}, {{Customer.address[1].city}}</span>
+  </div>
+  <div class=" col-7 row g-3 bg-white rounded m-3 p-3">
+    <div class="table-responsive">
+      <div class="table-responsive">
+        <table class="table table-bordered  p-0 m-0">
+          <thead>
+          <tr>
+            <th scope="col" class="text-light">#</th>
+            <th scope="col" class="text-light">Khách hàng</th>
+            <th scope="col" class="text-light">Thời gian</th>
+            <th scope="col" class="text-light">Phương thức giao hàng</th>
+            <th scope="col" class="text-light">Xem chi tiết</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr scope="row" *ngFor="let product of products">
+            <td>{{ product.id }}</td>
+            <td>{{ product.custom.last_name}}</td>
+            <td>{{product.order_date}}</td>
+            <td>
+              <span *ngIf="product.shipping_method_id === 2" class = "text-dark">Nhanh</span>
+              <span *ngIf="product.shipping_method_id === 1" class = "text-secondary">Tiêu chuẩn</span>
+              <span *ngIf="product.shipping_method_id === 3" class = "text-primary">Hỏa tốc</span>
+              <span *ngIf="product.shipping_method_id === 4" class = "text-danger">Super</span>
+            </td>
+            <td>
+              <button type="button" (click)="onView(product.id)" class="btn btn-primary m-1">
+                <i class="bi bi-bookmark "></i>
+              </button>
+            </td>
+          </tr>
+          <tr scope="row" *ngIf="products.length === 0">
+            <td colspan="6" class="text-center">No record found</td>
+          </tr>
+          </tbody>
+        </table>
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="5" [length]="totalElements"
+                       (page)="nextPage($event)"></mat-paginator>
+      </div>
+    </div>
+  </div>
+</div>

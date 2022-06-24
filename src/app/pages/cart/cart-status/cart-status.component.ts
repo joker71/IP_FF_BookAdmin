@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {NgbActiveModal, NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-cart-status',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CartStatusComponent implements OnInit {
 
-  constructor() { }
+  constructor( public activeModal: NgbActiveModal,) { }
 
   ngOnInit(): void {
-  }
 
+  }
+  onCancel(){
+    this.activeModal.close('Close click')
+  }
 }

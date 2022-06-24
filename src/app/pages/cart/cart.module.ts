@@ -6,6 +6,7 @@ import { CartStatusComponent } from './cart-status/cart-status.component';
 import {RouterModule, Routes} from "@angular/router";
 import {CustomersComponent} from "../customer/customers/customers.component";
 import {CustomerDetailComponent} from "../customer/customer-detail/customer-detail.component";
+import {MatPaginatorModule} from "@angular/material/paginator";
 
 const routes: Routes = [
   {
@@ -27,7 +28,7 @@ const routes: Routes = [
       },
       {
         path: 'details/:id',
-        component: CustomerDetailComponent,
+        component: CartDetailComponent,
         data: {
           title: 'customer detail'
         }
@@ -44,7 +45,8 @@ const routes: Routes = [
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    MatPaginatorModule
   ]
 })
 export class CartModule { }

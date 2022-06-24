@@ -1,1 +1,46 @@
-<p>carts works!</p>
+<div class="container">
+
+  <div class="table-responsive">
+    <table class="table table-bordered  p-0 m-0">
+      <thead>
+      <tr>
+        <th scope="col" class="text-light">#</th>
+        <th scope="col" class="text-light">Khách hàng</th>
+        <th scope="col" class="text-light">Thời gian</th>
+        <th scope="col" class="text-light">Phương thức giao hàng</th>
+        <th scope="col" class="text-light">Tình trạng</th>
+        <th scope="col" class="text-light">Hành động</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr scope="row" *ngFor="let product of products">
+        <td>{{ product.id }}</td>
+        <td>{{ product.custom.last_name}}</td>
+        <td>{{product.order_date}}</td>
+        <td>
+          <span *ngIf="product.shipping_method_id === 2" class = "text-success">Nhanh</span>
+          <span *ngIf="product.shipping_method_id === 1" class = "text-secondary">Tiêu chuẩn</span>
+          <span *ngIf="product.shipping_method_id === 3" class = "text-primary">Hỏa tốc</span>
+          <span *ngIf="product.shipping_method_id === 4" class = "text-danger">Super</span>
+        </td>
+        <td>
+          <span class =  "text-success">Đang giao</span>
+        </td>
+        <td>
+          <button type="button" (click)="onView(product.id)" class="btn btn-primary m-1">
+            <i class="bi bi-bookmark "></i>
+          </button>
+          <button type="button" (click)="onEdit(product.id)" class="btn btn-success m-1">
+            <i class="bi bi-pencil-fill  text-light"></i>
+          </button>
+        </td>
+      </tr>
+      <tr scope="row" *ngIf="products.length === 0">
+        <td colspan="6" class="text-center">No record found</td>
+      </tr>
+      </tbody>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="5" [length]="totalElements"
+                   (page)="nextPage($event)"></mat-paginator>
+  </div>
+</div>
